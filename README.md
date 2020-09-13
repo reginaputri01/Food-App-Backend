@@ -1,25 +1,65 @@
-# Food-App
-Backend Food App is a rest api created with the Express JS framework and database mysql, here is api for register, login, CRUD for product, category and history.
+# FoodApp - BackEnd
 
-## Project setup
+Simple application to CRUD database with node js, Express, and MySql.
+This application use JWT to authentication and authorization.
+
+## Table of Contents
+
+- [FoodApp-BackEnd](#foodapp-backend)
+  - [Table of Contents](#table-of-contents)
+  - [General info](#general-info)
+  - [Built With](#built-with)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Setup .env example](#setup-env-example)
+  - [Run the app](#run-the-app)
+  - [REST API](#rest-api)
+  
+## General info
+This project is simple CRUD data
+## Built With
+* [Node.js](https://nodejs.org/en/)
+* [Express.js](https://expressjs.com/)
+
+## Requirements
+* [Node.js](https://nodejs.org/en/)
+* [Postman](https://www.getpostman.com/) for testing
+* [Database](database-example.sql)
+	
+## Setup
+To run this project, install it locally using npm:
+
 ```
-npm install
+$ npm install
 ```
 
-### Compiles and hot-reloads for development
+## Setup .env example
+
+Create .env file in your root project folder.
+
+```env
+DB_HOST = localhost
+DB_USER = root
+DB_PASSWORD = your_password
+DB_DATABASE = your_database
+PORT = 8000
+BASE_URL = http://localhost:8000/
+SECRET_KEY = your-secret
 ```
-npm run dev
+## Run the app
+
+Development mode
+
+```bash
+$ npm run dev
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+Deploy mode
+
+```bash
+$ npm start
 ```
 
-### Lints and fixes files
-```
-standard --fix
-```
+## REST API
 
-### Dokumentation Postman :
-https://documenter.getpostman.com/view/5773671/TVK5eN5F
+You can view my Postman collection [here](https://documenter.getpostman.com/view/5773671/TVK5eN5F)
