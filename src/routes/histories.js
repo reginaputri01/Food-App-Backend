@@ -1,12 +1,14 @@
 const express = require('express')
-const historiesController = require('../controllers/HistoriesController')
+const historyController = require('../controllers/histories')
 const router = express.Router()
+const { verifyAccess, verifyAccessAdmin } = require('../middlewares/auth')
+const { upload } = require('../middlewares/multer')
 
 router
-  .post('/', historiesController.insertHistories)
-  .get('/', historiesController.getAllHistories)
-  .get('/:id', historiesController.getHistoriesById)
-  .patch('/:id', historiesController.updateHistories)
-  .delete('/:id', historiesController.deleteHistories)
-
+  .get('/:id', verifyAccess, historyController.getHistoryById)
+  .get('/', verifyAccess, historyController.getAllHistory)
+  .post('/', verifyAccessAdmin, upload, historyController.insertHistory)
+  .patch('/:id', verifyAccessAdmin, upload, historyController.updateHistory)
+  .delete('/:id', verifyAccessAdmin, historyController.deleteHistory)
+  
 module.exports = router

@@ -1,30 +1,41 @@
 const multer = require('multer')
+const path = require('path')
+const helpers = require('../helpers/helpers')
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads')
-  },
+  destination: './uploads',
   filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname)
   }
 })
 
-let fileFilter = function (req, file, cb) {
-  const allowedMimes = ['image/jpeg', 'image/png']
-  if (allowedMimes.includes(file.mimetype)) {
-    cb(null, true)
-  } else {
-    cb(null, false)
-  }
+function upload (req, res, next) {
+  const uploadFiles = multer({
+    storage: storage,
+    limits: { fileSize: 1000000 },
+    fileFilter: function (req, file, cb) {
+      const extFile = path.extname(file.originalname)
+      if (extFile !== '.png') {
+        cb('png Only!', false)
+      } else {
+        cb(null, true)
+      }
+    }
+  }).array('image', 6)
+
+  uploadFiles(req, res, function (err) {
+    if (err) {
+      if (err == 'png Only!') {
+        return helpers.response(res, null, 'png Only!', 202, 'processing has not been completed')
+      } else {
+        return helpers.response(res, null, 'File too large', 202, 'processing has not been completed')
+      }
+    } else {
+      next()
+    }
+  })
 }
 
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1 * 1000 * 1000
-  },
-  fileFilter: fileFilter
-})
 module.exports = {
   upload
 }

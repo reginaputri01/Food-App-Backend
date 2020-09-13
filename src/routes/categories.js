@@ -1,14 +1,15 @@
 const express = require('express')
-const categoriesController = require('../controllers/CategoriesController')
-const { verifyAccess } = require('../middlewares/auth')
-const { cacheGetAll, cacheGetById, clearGetAll } = require('../middlewares/redis')
+const categoryController = require('../controllers/categories')
 const router = express.Router()
+const { verifyAccess, verifyAccessAdmin } = require('../middlewares/auth')
+const { upload } = require('../middlewares/multer')
+// const redis = require('../middlewares/redis')
 
 router
-  .post('/', verifyAccess, clearGetAll, categoriesController.insertCategories)
-  .get('/', verifyAccess, cacheGetAll, categoriesController.getAllCategories)
-  .get('/:id', verifyAccess, cacheGetById, categoriesController.getCategoriesById)
-  .patch('/:id', verifyAccess, categoriesController.updateCategories)
-  .delete('/:id', verifyAccess, categoriesController.deleteCategories)
-
+  .get('/:id', verifyAccess, categoryController.getCategoryById)
+  .get('/', verifyAccess, categoryController.getAllCategory)
+  .post('/', verifyAccessAdmin, upload, categoryController.insertCategory)
+  .patch('/:id', verifyAccessAdmin, upload, categoryController.updateCategory)
+  .delete('/:id', verifyAccessAdmin, categoryController.deleteCategory)
+  
 module.exports = router
