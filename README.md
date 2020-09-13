@@ -22,6 +22,4 @@ standard --fix
 ```
 
 ### Dokumentation Postman :
-```
-https://www.postman.com/collections/b4cf287eda7594110450
-```
+https://documenter.getpostman.com/view/5773671/TVK5eN5F
