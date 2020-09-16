@@ -1,12 +1,12 @@
 # FoodApp - BackEnd
 
-Simple application to CRUD database with node js, Express, and MySql.
+FoodApp - Backend is a Rest API for FoodApp. 
+Simple application to CRUD database with NodeJS, Express, and MySql.
 This application use JWT to authentication and authorization.
 
 ## Table of Contents
 
 - [FoodApp-BackEnd](#foodapp-backend)
-  - [Table of Contents](#table-of-contents)
   - [General info](#general-info)
   - [Built With](#built-with)
   - [Requirements](#requirements)
