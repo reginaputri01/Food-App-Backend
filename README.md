@@ -1,12 +1,12 @@
-# FoodApp - BackEnd
+# PosApp - BackEnd
 
-FoodApp - Backend is a Rest API for FoodApp. 
+PosApp Backend is a Rest API for PosApp Frontend. 
 Simple application to CRUD database with NodeJS, Express, and MySql.
 This application use JWT to authentication and authorization.
 
 ## Table of Contents
 
-- [FoodApp-BackEnd](#foodapp-backend)
+- [PosApp-BackEnd](#foodapp-backend)
   - [General info](#general-info)
   - [Built With](#built-with)
   - [Requirements](#requirements)
