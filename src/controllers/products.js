@@ -51,7 +51,7 @@ const products = {
     }
 
     if (req.files[0]) {
-      data.image = 'http://localhost:8000/' + 'uploads/' + req.files[0].filename
+      data.image = process.env.BASE_URL + 'uploads/' + req.files[0].filename
     }
 
     productModels.updateProduct(id, data)
@@ -83,7 +83,7 @@ const products = {
     const { name, price, status, idCategory } = req.body
     const data = {
       name,
-      image: 'http://localhost:8000/' + 'uploads/' + req.files[0].filename,
+      image: process.env.BASE_URL + 'uploads/' + req.files[0].filename,
       price,
       status,
       idCategory,
