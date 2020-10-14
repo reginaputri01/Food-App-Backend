@@ -15,7 +15,7 @@ const histories = {
 
   getAllHistory: () => {
     return new Promise((resolve, reject) => {
-      connection.query(`SELECT *, products.price*history.countItem AS 'amount', history.id AS 'id' FROM products INNER JOIN category ON products.idCategory = category.id INNER JOIN history ON history.idProduct = products.id`, (err, result) => {
+      connection.query(`SELECT * FROM history`, (err, result) => {
         if (!err) {
           resolve(result)
         } else {
